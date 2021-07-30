@@ -1,0 +1,12 @@
+version: '3'
+services:
+  mitmweb:
+    image: mitmproxy/mitmproxy
+    tty: true
+    ports:
+      - 8080:8080
+      - 8082:8081
+    command: mitmweb --web-host 0.0.0.0 --mode socks5 --showhost
+    volumes:
+      - ./.mitmproxy:/home/mitmproxy/.mitmproxy
+      - ./scripts:/home/mitmproxy/scripts
